@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions", "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj", "{214BDD22-C147-46EC-A4B6-5032B63D5AEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA6219A6-FDF7-4BAC-BCBE-DE0AEDA92283}
+	EndGlobalSection
+EndGlobal
