@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
             //});
             
             //_dbContext.SaveChanges();
-            var model = _dbContext.TModels.Select(x=> x.Name.MySqlEncrypt("HelloWorld")).ToList();
+            var model = _dbContext.TModels.ToList();
             return View();
         }
 

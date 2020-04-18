@@ -25,14 +25,19 @@ namespace WebApplication1.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.UseEncryptAttribute("HelloWorld");
+            //builder.UseEncryptAttribute("HelloWorld");
         }
     }
 
     public class TestModel
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        //[MysqlEncrypt]
-        public string Name { get; set; }
+        [MysqlEncrypt]
+        public EncString Name { get; set; }
+    }
+
+    public class EncString
+    {
+
     }
 }

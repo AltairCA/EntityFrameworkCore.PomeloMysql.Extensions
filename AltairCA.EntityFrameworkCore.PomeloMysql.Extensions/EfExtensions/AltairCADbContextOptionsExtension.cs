@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
@@ -13,6 +15,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
         public void ApplyServices(IServiceCollection services)
         {
             services.AddSingleton<IMethodCallTranslatorProvider, AltairCaMySqlMethodCallTranslatorPlugin>();
+            services.AddSingleton<IRelationalTypeMappingSourcePlugin, EncryptAttributeTypeMappingPlugin>();
         }
 
         public void Validate(IDbContextOptions options)

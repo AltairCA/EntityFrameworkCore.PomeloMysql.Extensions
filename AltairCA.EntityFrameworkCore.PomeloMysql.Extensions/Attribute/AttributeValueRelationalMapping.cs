@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -18,6 +21,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
 
         public AttributeValueRelationalMapping() :
             base(new RelationalTypeMappingParameters(
+                new CoreTypeMappingParameters(typeof(string),_converter),"longtext" 
             ))
         {
 
@@ -33,15 +37,27 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
     {
         public RelationalTypeMapping FindMapping(in RelationalTypeMappingInfo mappingInfo)
         {
-            foreach (var property in mappingInfo.ClrType.GetProperties())
+            if (mappingInfo.ClrType == typeof(string))
             {
-                var attributes = property.GetCustomAttributes(typeof(MysqlEncryptAttribute), false);
+                var attributes = mappingInfo.ClrType.GetCustomAttributes(typeof(MysqlEncryptAttribute), true);
                 if (attributes.Any())
                 {
                     return new AttributeValueRelationalMapping();
                 }
             }
+            
             return null;
+        }
+        public class Test
+        {
+
+        }
+    }
+    public class DemoCommandInterceptor : DbCommandInterceptor
+    {
+        public override InterceptionResult<DbCommand> CommandCreating(CommandCorrelatedEventData eventData, InterceptionResult<DbCommand> result)
+        {
+            return base.CommandCreating(eventData, result);
         }
     }
 }
