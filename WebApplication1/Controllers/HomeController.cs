@@ -24,15 +24,28 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            //_dbContext.Database.EnsureCreated();
+            _dbContext.Database.EnsureCreated();
             ////_dbContext.Database.Migrate();
-            //_dbContext.TModels.Add(new TestModel
-            //{
-            //    Name = "Hello"
-            //});
-            
-            //_dbContext.SaveChanges();
-            var model = _dbContext.TModels.ToList();
+            _dbContext.TModels.Add(new TestModel
+            {
+                Name = "Hello"
+            });
+            _dbContext.TModels.Add(new TestModel
+            {
+                Name = "test lol"
+            });
+            _dbContext.TModels.Add(new TestModel
+            {
+                Name = "hahha"
+            });
+            _dbContext.SaveChanges();
+            var model = _dbContext.TModels.First();
+            model.Name = "test category";
+            _dbContext.SaveChanges();
+
+            var test = _dbContext.TModels.Select(x => x.Name).ToList();
+            var searchTest = _dbContext.TModels.Where(x => x.Name.MySqlDecrypt().Contains("test")).ToList();
+
             return View();
         }
 

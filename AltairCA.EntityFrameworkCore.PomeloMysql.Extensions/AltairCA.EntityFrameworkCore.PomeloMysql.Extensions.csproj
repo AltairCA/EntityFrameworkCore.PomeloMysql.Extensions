@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
-    <PackageReference Include="Thinktecture.EntityFrameworkCore.Relational" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\HarvestCraft-Backend\src\HarvestCraftAPI\Lib\AltairCA.Utils\AltairCA.Utils.csproj" />
   </ItemGroup>
 
 </Project>

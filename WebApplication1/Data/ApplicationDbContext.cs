@@ -19,13 +19,13 @@ namespace WebApplication1.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseEncryptionFunctions();
+            optionsBuilder.UseEncryptionFunctions("HelloWorld");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //builder.UseEncryptAttribute("HelloWorld");
+            builder.UseEncryptAttribute("HelloWorld");
         }
     }
 
@@ -33,11 +33,8 @@ namespace WebApplication1.Data
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         [MysqlEncrypt]
-        public EncString Name { get; set; }
+        public string Name { get; set; }
     }
 
-    public class EncString
-    {
-
-    }
+    
 }

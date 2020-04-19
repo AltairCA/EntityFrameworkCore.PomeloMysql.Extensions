@@ -13,7 +13,6 @@ using WebApplication1.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Thinktecture;
 
 namespace WebApplication1
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute;
+using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -11,11 +12,15 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
 {
     internal class AltairCADbContextOptionsExtension:IDbContextOptionsExtension
     {
+        
+        public AltairCADbContextOptionsExtension(string password)
+        {
+            AltairCaFunctionImplementation.Password = password.ToSha512();
+        }
         private DbContextOptionsExtensionInfo _info;
         public void ApplyServices(IServiceCollection services)
         {
             services.AddSingleton<IMethodCallTranslatorProvider, AltairCaMySqlMethodCallTranslatorPlugin>();
-            services.AddSingleton<IRelationalTypeMappingSourcePlugin, EncryptAttributeTypeMappingPlugin>();
         }
 
         public void Validate(IDbContextOptions options)

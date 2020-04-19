@@ -1,11 +1,12 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{2CEF301A-1D3E-4F1C-8B65-A73F4A215056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions", "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj", "{214BDD22-C147-46EC-A4B6-5032B63D5AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions", "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj", "{214BDD22-C147-46EC-A4B6-5032B63D5AEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltairCA.Utils", "..\..\..\HarvestCraft-Backend\src\HarvestCraftAPI\Lib\AltairCA.Utils\AltairCA.Utils.csproj", "{211D9905-1676-4396-A908-AA8C14ED9DAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +22,10 @@ Global
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
