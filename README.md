@@ -1,5 +1,5 @@
 # IpRateLimiter.AspNetCore.AltairCA
-[![Build Status](https://jenkins.altairsl.us/buildStatus/icon?job=IPRateLimit%2FPublish)](https://jenkins.altairsl.us/job/IPRateLimit/job/Publish/)
+[![Build Status](https://jenkins.altairsl.us/buildStatus/icon?job=Pomelo+Mysql+Encrypt%2FPublish)](https://jenkins.altairsl.us/view/Nugets/job/Pomelo%20Mysql%20Encrypt/job/Publish/)
 
 IpRateLimiter.AspNetCore.AltairCA is an request limiting solution by looking at the client ip address. 
 
