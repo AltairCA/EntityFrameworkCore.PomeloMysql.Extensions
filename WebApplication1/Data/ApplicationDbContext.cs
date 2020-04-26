@@ -19,13 +19,13 @@ namespace WebApplication1.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseEncryptionFunctions("HelloWorld");
+            optionsBuilder.UseEncryptionFunctions("HelloWorld1");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.UseEncryptAttribute("HelloWorld");
+            builder.UseEncryptAttribute("HelloWorld1");
         }
     }
 
