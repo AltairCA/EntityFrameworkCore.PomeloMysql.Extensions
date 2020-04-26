@@ -4,7 +4,7 @@
 EntityFrameworkCore.PomeloMysql.Extensions is a Pomelo Mysql Extension that supports native MySQL AES encryption. Meaning this will support search query on encrypted columns. Well, this is good if you have GDPR compliance requirement.
 
 ### Note
-`If you use this make sure you application to the MySQL service is use a encrypted connection because this will transmit the RAW PASSWORD over the network` you can enforced in the connection string. example -
+`If you use this make sure your application to the MySQL service is use a encrypted connection because this will transmit the RAW PASSWORD over the network` you can enforced in the connection string. example -
 ```json
 {
   "DefaultConnection": "server=127.0.0.1;database=youdb;user=root;password=;persistsecurityinfo=True;port=3306;SslMode=Required;CharSet=utf8mb4;"
