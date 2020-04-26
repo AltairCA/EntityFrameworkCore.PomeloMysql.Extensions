@@ -36,31 +36,38 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
         }
         public static String AES_decrypt(String Input, string key)
         {
-            RijndaelManaged aes = new RijndaelManaged();
-            aes.KeySize = 128;
-            aes.BlockSize = 128;
-            aes.Mode = CipherMode.ECB;
-            aes.Padding = PaddingMode.PKCS7;
-            aes.Key = mkey(key);
-            aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-            var decrypt = aes.CreateDecryptor();
-            byte[] encryptedStr = Input.FromHex2ByteArray();
-
-            string Plain_Text;
-            
-            using (var ms = new MemoryStream(encryptedStr))
+            try
             {
-                using (var cs = new CryptoStream(ms, decrypt, CryptoStreamMode.Read))
+                RijndaelManaged aes = new RijndaelManaged();
+                aes.KeySize = 128;
+                aes.BlockSize = 128;
+                aes.Mode = CipherMode.ECB;
+                aes.Padding = PaddingMode.PKCS7;
+                aes.Key = mkey(key);
+                aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+                var decrypt = aes.CreateDecryptor();
+                byte[] encryptedStr = Input.FromHex2ByteArray();
+
+                string Plain_Text;
+
+                using (var ms = new MemoryStream(encryptedStr))
                 {
-                    using (StreamReader reader = new StreamReader(cs))
+                    using (var cs = new CryptoStream(ms, decrypt, CryptoStreamMode.Read))
                     {
-                        Plain_Text = reader.ReadToEnd();
+                        using (StreamReader reader = new StreamReader(cs))
+                        {
+                            Plain_Text = reader.ReadToEnd();
+                        }
                     }
                 }
+
+                return Plain_Text;
             }
-            
-            return Plain_Text;
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         private static byte[] mkey(string skey)
         {
