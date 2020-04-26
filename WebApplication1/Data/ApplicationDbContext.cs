@@ -34,6 +34,7 @@ namespace WebApplication1.Data
         public string Id { get; set; } = Guid.NewGuid().ToString();
         [MysqlEncrypt]
         public string Name { get; set; }
+        public string Name2 { get; set; }
     }
 
     
