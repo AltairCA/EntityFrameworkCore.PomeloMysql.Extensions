@@ -6,8 +6,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebAppli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions", "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj", "{214BDD22-C147-46EC-A4B6-5032B63D5AEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltairCA.Utils", "..\..\..\HarvestCraft-Backend\src\HarvestCraftAPI\Lib\AltairCA.Utils\AltairCA.Utils.csproj", "{211D9905-1676-4396-A908-AA8C14ED9DAE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,10 +20,6 @@ Global
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{211D9905-1676-4396-A908-AA8C14ED9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

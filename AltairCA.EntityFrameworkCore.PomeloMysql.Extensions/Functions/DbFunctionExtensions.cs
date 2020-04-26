@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using AltairCA.Utils.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions

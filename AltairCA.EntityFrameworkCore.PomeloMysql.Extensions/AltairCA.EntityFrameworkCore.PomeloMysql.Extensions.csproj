@@ -8,8 +8,4 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\HarvestCraft-Backend\src\HarvestCraftAPI\Lib\AltairCA.Utils\AltairCA.Utils.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute;
+using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Extensions;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Query;

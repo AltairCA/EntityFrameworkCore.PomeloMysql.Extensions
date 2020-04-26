@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using AltairCA.Utils.Extensions;
+using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Extensions;
 
 namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
 {

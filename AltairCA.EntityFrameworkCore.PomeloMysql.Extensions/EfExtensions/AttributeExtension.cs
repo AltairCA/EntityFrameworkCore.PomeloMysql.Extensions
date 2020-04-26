@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute;
+using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
