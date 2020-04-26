@@ -1,96 +1,66 @@
-# IpRateLimiter.AspNetCore.AltairCA
+# EntityFrameworkCore.PomeloMysql.Extensions
 [![Build Status](https://jenkins.altairsl.us/buildStatus/icon?job=Pomelo+Mysql+Encrypt%2FPublish)](https://jenkins.altairsl.us/view/Nugets/job/Pomelo%20Mysql%20Encrypt/job/Publish/)
 
-IpRateLimiter.AspNetCore.AltairCA is an request limiting solution by looking at the client ip address. 
+EntityFrameworkCore.PomeloMysql.Extensions is an Pomelo Mysql Extension that support native mysql AES encryption. Meaning this will support search query on encrypted columns. 
+Well this is good if you have GDPR compliance requirment. 
 
-**Inspired by `AspNetCoreRateLimit` [repo link](https://github.com/stefanprodan/AspNetCoreRateLimit)**
+### Note
+`If you use this make sure you application to the MySQL service is use a encrypted connection because this will transmit the RAW PASSWORD over the network` you can enforced in the connection string. example -
+```json
+{
+  "DefaultConnection": "server=127.0.0.1;database=youdb;user=root;password=;persistsecurityinfo=True;port=3306;SslMode=Required;CharSet=utf8mb4;"
+}
+```
+take a look at `SslMode=Required`
 
-
-`IpRateLimiter.AspNetCore.AltairCA` targets `netstandard2.0`. The package has following dependencies
+`EntityFrameworkCore.PomeloMysql.Extensions` targets `netstandard2.0`. The package has following dependencies
 
 ```xml
-<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.3" />
-<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.3" />
-<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="1.1.0" />
-<PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
-<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
-<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
 ```
+
+When you choose the version choose with the `.Net Core` Version for example if `.Net Core` version is 3.1 then choose `EntityFrameworkCore.PomeloMysql.Extensions` version 3.1.x
 
 ## setup
 
 ### NuGet install:
 
-`Install-Package IpRateLimiter.AspNetCore.AltairCA`
+`Install-Package EntityFrameworkCore.PomeloMysql.Extensions`
 
-### Startup.cs
+### DbContext
 
 ```c#
-public void ConfigureServices(IServiceCollection services)
-{
-  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-  services.AddMemoryCache();
-  services.AddHttpContextAccessor();
-  services.AddScoped<IIpRateLimitStorageProvider, MemoryCacheProvider>();
-  services.AddIpRateLimiter(options =>
-  {
-    options.GlobalRateLimit = 10;
-    options.GlobalSpan = TimeSpan.FromMinutes(30);
-    options.ExcludeList = new List<string>
-    {
-      "127.0.0.1", "192.168.0.0/24"
-     };
-     });      
- }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseEncryptionFunctions("HelloWorld1");
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.UseEncryptAttribute("HelloWorld1");
+        }
 ```
 
-Default options for IpRateLimit
+Replace `HelloWorld` with your password
 
+### Example of use
+
+#### `MysqlEncrypt` Annotation Use
 ```c#
-public class IpRateLimitOptions
+    public class TestModel
     {
-        public string RealIpHeader { get; set; }
-        public List<string> ExcludeList { get; set; }
-        public int GlobalRateLimit { get; set; } = 1000;
-        public TimeSpan GlobalSpan { get; set; } = TimeSpan.FromMinutes(30);
-        public int StatusCode { get; set; } = 429;
-        public object LimitReachedResponse = new {detail = "Quota exceeded. Maximum allowed: {0} per {1}. Please try again in {2} second(s)." };
-        public string CachePrefix { get; set; } = "AltairCA";
-
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        [MysqlEncrypt] #Use MysqlEncrypt attribute to denote the property must be encrypt in database
+        public string Name { get; set; }
     }
 ```
-`{0}` is max limit, `{1}` is period in seconds, `{2}` when the quota get resets in seconds
-
-
-### Using it in a controller
-
+#### How to use it in search query
 ```c#
-    [Route("api/[controller]")]
-    [ApiController]
-    [IpRateLimitHttp]
-    public class ValuesController : ControllerBase
-    {
-        // GET api/values
-        [HttpGet]
-        
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-        [IpRateLimitHttp(10*60,2,"group1" )]
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-        [IpRateLimitHttp(10*60,2,"group1" )]
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-    }
+var searchTest = _dbContext.TModels.Where(x => x.Name.MySqlDecrypt().Contains("test")).ToList();
 ```
 
-You can apply the filter attribute at the top of the controller class. It will apply the rule for all of the endpoints that defined in the controller or you can put the attribute at the endpoint level. If you put the attribute at the class level and the endpoint level it will work as a `AND` operator.
+Above Linq will convert to a Native MySql Query that will decrypt the column before it do a search.
+
+You can find a example that I have used in the `WebApplication` Project `HomeController.cs`
