@@ -1,7 +1,7 @@
-# EntityFrameworkCore.PomeloMysql.Extensions
+# AltairCA.EntityFrameworkCore.PomeloMysql.Extensions
 [![Build Status](https://jenkins.altairsl.us/buildStatus/icon?job=Pomelo+Mysql+Encrypt%2FPublish)](https://jenkins.altairsl.us/view/Nugets/job/Pomelo%20Mysql%20Encrypt/job/Publish/)
 
-EntityFrameworkCore.PomeloMysql.Extensions is a Pomelo Mysql Extension that supports native MySQL AES encryption. Meaning this will support search query on encrypted columns. Well, this is good if you have GDPR compliance requirement.
+AltairCA.EntityFrameworkCore.PomeloMysql.Extensions is a Pomelo Mysql Extension that supports native MySQL AES encryption. Meaning this will support search query on encrypted columns. Well, this is good if you have GDPR compliance requirement.
 
 ### Note
 `If you use this make sure your application to the MySQL service is use a encrypted connection because this will transmit the RAW PASSWORD over the network`. You can enforce it in the connection string. example -
@@ -12,19 +12,19 @@ EntityFrameworkCore.PomeloMysql.Extensions is a Pomelo Mysql Extension that supp
 ```
 take a look at `SslMode=Required`
 
-`EntityFrameworkCore.PomeloMysql.Extensions` targets `netstandard2.0`. The package has following dependencies
+`AltairCA.EntityFrameworkCore.PomeloMysql.Extensions` targets `netstandard2.0`. The package has following dependencies
 
 ```xml
 <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
 ```
 
-When you choose the version choose with the `.Net Core` Version for example if `.Net Core` version is 3.1 then choose `EntityFrameworkCore.PomeloMysql.Extensions` version 3.1.x
+When you choose the version choose with the `.Net Core` Version for example if `.Net Core` version is 3.1 then choose `AltairCA.EntityFrameworkCore.PomeloMysql.Extensions` version 3.1.x
 
 ## setup
 
 ### NuGet install:
 
-`Install-Package EntityFrameworkCore.PomeloMysql.Extensions`
+`Install-Package AltairCA.EntityFrameworkCore.PomeloMysql.Extensions`
 
 ### DbContext
 
