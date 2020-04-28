@@ -56,7 +56,8 @@ namespace WebApplication1.Controllers
             });
              _dbContext.SaveChanges();
              var keys = _dbContext.TModels.Where(x=> x.Name.MySqlDecrypt().Contains("ha") || x.Name.MySqlDecrypt().Contains("lol")).GroupBy(x => x.Name).Select(x => x.Key).ToList();
-            return View();
+            
+             return View();
         }
 
         public IActionResult Privacy()
