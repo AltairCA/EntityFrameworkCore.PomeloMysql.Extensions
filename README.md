@@ -63,3 +63,6 @@ var searchTest = _dbContext.TModels.Where(x => x.Name.MySqlDecrypt().Contains("t
 Above Linq will convert to a Native MySql Query that will decrypt the column before it do a search.
 
 You can find a example that I have used in the `WebApplication` Project `HomeController.cs`
+
+
+Just added a comment here !
