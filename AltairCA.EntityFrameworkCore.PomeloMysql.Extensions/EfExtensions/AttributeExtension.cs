@@ -16,7 +16,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
 		public static ModelBuilder UseEncryptAttribute(this ModelBuilder builder,string password)
         {
 
-            AttributeExtension.Password = password.ToSha512();
+            AttributeExtension.Password = password;
             foreach (var entityType in builder.Model.GetEntityTypes())
 			{
 				foreach (var property in entityType.GetProperties())

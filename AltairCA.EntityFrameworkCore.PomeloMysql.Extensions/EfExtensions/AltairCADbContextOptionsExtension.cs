@@ -16,12 +16,12 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
         
         public AltairCADbContextOptionsExtension(string password)
         {
-            AltairCaFunctionImplementation.Password = password.ToSha512();
+            AltairCaFunctionImplementation.Password = password;
         }
         private DbContextOptionsExtensionInfo _info;
         public void ApplyServices(IServiceCollection services)
         {
-            services.AddSingleton<IMethodCallTranslatorProvider, AltairCaMySqlMethodCallTranslatorPlugin>();
+            new EntityFrameworkRelationalServicesBuilder(services).TryAdd<IMethodCallTranslatorPlugin,AltairCaMySqlMethodCallTranslatorPlugin>();
         }
 
         public void Validate(IDbContextOptions options)
@@ -44,12 +44,17 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
 
             public override string LogFragment => "";
 
+            public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other)
+            {
+                return true;
+            }
+
             public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
             {
 
             }
 
-            public override long GetServiceProviderHashCode()
+            public override int GetServiceProviderHashCode()
             {
                 return 0;
             }

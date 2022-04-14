@@ -30,8 +30,8 @@ namespace WebApplication1
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseMySql(
-                        Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                        ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")));
                     //options.AddRelationalTypeMappingSourcePlugin<EncryptAttributeTypeMappingPlugin>();
                 }
                 );

@@ -55,7 +55,7 @@ namespace WebApplication1.Controllers
                 Name = "hahha"
             });
              _dbContext.SaveChanges();
-             var keys = _dbContext.TModels.Where(x=> x.Name.MySqlDecrypt().Contains("ha") || x.Name.MySqlDecrypt().Contains("lol")).GroupBy(x => x.Name).Select(x => x.Key).ToList();
+             var keys = _dbContext.TModels.GroupBy(x => x.Name.MySqlDecrypt()).Select(x => x.Key).ToList();
             
              return View();
         }

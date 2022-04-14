@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebAppli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions", "AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj", "{214BDD22-C147-46EC-A4B6-5032B63D5AEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionTest", "EncryptionTest\EncryptionTest.csproj", "{0072DD8A-6C0E-48A6-BE50-539B9BCF4A5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214BDD22-C147-46EC-A4B6-5032B63D5AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0072DD8A-6C0E-48A6-BE50-539B9BCF4A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0072DD8A-6C0E-48A6-BE50-539B9BCF4A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0072DD8A-6C0E-48A6-BE50-539B9BCF4A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0072DD8A-6C0E-48A6-BE50-539B9BCF4A5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

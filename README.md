@@ -15,10 +15,10 @@ take a look at `SslMode=Required`
 `AltairCA.EntityFrameworkCore.PomeloMysql.Extensions` targets `netstandard2.0`. The package has following dependencies
 
 ```xml
-<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
 ```
 
-When you choose the version choose with the `.Net Core` Version for example if `.Net Core` version is 3.1 then choose `AltairCA.EntityFrameworkCore.PomeloMysql.Extensions` version 3.1.x
+When you choose the version choose with the `.Net Core` Version for example if `.Net Core` version is 6.0 then choose `AltairCA.EntityFrameworkCore.PomeloMysql.Extensions` version 6.0.x
 
 ## setup
 

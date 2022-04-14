@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PackageProjectUrl>https://github.com/AltairCA/EntityFrameworkCore.PomeloMysql.Extensions</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <Description>AltairCA.EntityFrameworkCore.PomeloMysql.Extensions is a Pomelo Mysql Extension that supports native MySQL AES encryption. Meaning this will support search query on encrypted columns. Well, this is good if you have GDPR compliance requirement.</Description>
@@ -9,10 +9,12 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/AltairCA/EntityFrameworkCore.PomeloMysql.Extensions</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>6.0.0</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

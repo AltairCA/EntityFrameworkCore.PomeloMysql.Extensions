@@ -10,7 +10,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
     {
         public static String AES_encrypt(String Input, string key)
         {
-            RijndaelManaged aes = new RijndaelManaged();
+            Aes aes = Aes.Create();
             aes.KeySize = 128;
             aes.BlockSize = 128;
             aes.Mode = CipherMode.ECB;
@@ -38,7 +38,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
         {
             try
             {
-                RijndaelManaged aes = new RijndaelManaged();
+                Aes aes = Aes.Create();
                 aes.KeySize = 128;
                 aes.BlockSize = 128;
                 aes.Mode = CipherMode.ECB;

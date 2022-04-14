@@ -1,19 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions;
 using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore.Storage;
 using Pomelo.EntityFrameworkCore.MySql.Query.Internal;
 
 namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.EfExtensions
 {
-    internal class AltairCaMySqlMethodCallTranslatorPlugin:MySqlMethodCallTranslatorProvider
+    internal class AltairCaMySqlMethodCallTranslatorPlugin:IMethodCallTranslatorPlugin
     {
-        public AltairCaMySqlMethodCallTranslatorPlugin(RelationalMethodCallTranslatorProviderDependencies dependencies) : base(dependencies)
+        public AltairCaMySqlMethodCallTranslatorPlugin(IRelationalTypeMappingSource typeMappingSource,
+            ISqlExpressionFactory sqlExpressionFactory) 
+            
         {
-            ISqlExpressionFactory expressionFactory = dependencies.SqlExpressionFactory;
-            this.AddTranslators(new List<IMethodCallTranslator>
+            if (!(sqlExpressionFactory is MySqlSqlExpressionFactory npgsqlSqlExpressionFactory))
             {
-                new AltairCaFunctionImplementation(expressionFactory)
-            });
+                throw new ArgumentException($"Must be an {nameof(MySqlSqlExpressionFactory)}", nameof(sqlExpressionFactory));
+            }
+            Translators = new IMethodCallTranslator[] { new AltairCaFunctionImplementation(sqlExpressionFactory), };
         }
+
+        public IEnumerable<IMethodCallTranslator> Translators { get; }
     }
 }

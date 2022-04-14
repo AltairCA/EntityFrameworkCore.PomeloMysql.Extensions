@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
@@ -43,7 +44,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions
             _expressionFactory = expressionFactory;
         }
 
-        public SqlExpression Translate(SqlExpression instance, MethodInfo method, IReadOnlyList<SqlExpression> arguments)
+        public SqlExpression Translate(SqlExpression instance, MethodInfo method, IReadOnlyList<SqlExpression> arguments,IDiagnosticsLogger<DbLoggerCategory.Query> logger)
         {
             var password = _expressionFactory.Constant(Password);
             if (method == _nonTranslatableEncryptMethod || method == __nonTranslatableDecryptMethod)
@@ -54,7 +55,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions
             {
                 var value = arguments[0];
                 
-                var aesToHexExpression = AESEncryptionBuild(instance, password, value);
+                var aesToHexExpression = AESEncryptionBuild(password, value);
 
                 return aesToHexExpression;
             }
@@ -62,7 +63,7 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions
             {
                 var value = arguments[1];
                 
-                var aesToHexExpression = AESEncryptionBuild(instance, password, value);
+                var aesToHexExpression = AESEncryptionBuild( password, value);
 
                 return aesToHexExpression;
             }
@@ -71,47 +72,61 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Functions
             {
                 var value = arguments[1];
                 
-                var aesDecryptExpression = AesDecryptExpression(instance, password, value);
+                var aesDecryptExpression = AesDecryptExpression(password, value);
                 return _expressionFactory.Convert(aesDecryptExpression, typeof(string));
             }
             if (method == _decryptStringMethod)
             {
                 var value = arguments[0];
 
-                var aesDecryptExpression = AesDecryptExpression(instance, password, value);
+                var aesDecryptExpression = AesDecryptExpression(password, value);
                 return _expressionFactory.Convert(aesDecryptExpression, typeof(string));
             }
             return null;
         }
 
-        private SqlFunctionExpression AesDecryptExpression(SqlExpression instance, SqlExpression password, SqlExpression value)
+        private SqlFunctionExpression AesDecryptExpression(SqlExpression password, SqlExpression value)
         {
             
-            var unhexValueExpression = _expressionFactory.Function(instance, "UNHEX", new List<SqlExpression>()
+            var unhexValueExpression = _expressionFactory.Function( "UNHEX", new List<SqlExpression>()
             {
                 value
+            },true,new List<bool>()
+            {
+                true
             }, typeof(string));
-            var aesDecryptExpression = _expressionFactory.Function(instance, "AES_DECRYPT",
+            var aesDecryptExpression = _expressionFactory.Function( "AES_DECRYPT",
                 new List<SqlExpression>()
                 {
                     unhexValueExpression,
                     password
+                },true,new List<bool>()
+                {
+                    true,
+                    false
                 }, typeof(byte[]));
             return aesDecryptExpression;
         }
 
-        protected virtual SqlFunctionExpression AESEncryptionBuild(SqlExpression instance, SqlExpression password,
+        protected virtual SqlFunctionExpression AESEncryptionBuild( SqlExpression password,
             SqlExpression value)
         {
-            var aesEncryptionExpression = _expressionFactory.Function(instance, "AES_ENCRYPT",
+            var aesEncryptionExpression = _expressionFactory.Function( "AES_ENCRYPT",
                 new List<SqlExpression>()
                 {
                     value,
                     password
+                },true,new List<bool>
+                {
+                    true,
+                    false
                 }, typeof(byte[]));
-            var aesToHexExpression = _expressionFactory.Function(instance, "HEX", new List<SqlExpression>()
+            var aesToHexExpression = _expressionFactory.Function( "HEX", new List<SqlExpression>()
             {
                 aesEncryptionExpression
+            },true,new List<bool>()
+            {
+                true
             }, typeof(string));
             return aesToHexExpression;
         }

@@ -1,28 +1,45 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>aspnet-WebApplication1-C457667A-CF63-408E-9257-463D77E6983B</UserSecretsId>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Experiment\" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions\AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="Experiment\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Experiment\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Remove="Experiment\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Remove="Experiment\**" />
   </ItemGroup>
 
 </Project>

@@ -6,13 +6,13 @@ namespace AltairCA.EntityFrameworkCore.PomeloMysql.Extensions.Attribute
     {
         public static string MySqlEncrypt(this string value, string password)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrEmpty(value))
                 return null;
             return AESCipherMysql.AES_encrypt(value, password);
         }
         public static string MySqlDecrypt(this string value, string password)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrEmpty(value))
                 return null;
             return AESCipherMysql.AES_decrypt(value, password);
         }
